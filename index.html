@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0d1a">
+<title>SilentSOS – Emergency QR Stickers</title>
+<style>
+:root{--tx:#f4f6ff;--mu:#a9b0d0;--gl:rgba(255,255,255,.09);--gb:rgba(255,255,255,.2);--ac:#ff4d6d}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--tx);background:#0b0d1a;min-height:100vh;overflow-x:hidden}
+.bl{position:fixed;inset:0;z-index:-1;filter:blur(70px) saturate(1.5);overflow:hidden}
+.bl i{position:absolute;border-radius:50%;animation:fl 16s ease-in-out infinite alternate}
+.bl i:nth-child(1){width:60vmax;height:60vmax;background:#ff4d6d;left:-20vmax;top:-15vmax;opacity:.55}
+.bl i:nth-child(2){width:55vmax;height:55vmax;background:#5b6cff;right:-20vmax;top:25vh;opacity:.55;animation-delay:-5s}
+.bl i:nth-child(3){width:45vmax;height:45vmax;background:#19d3c5;left:10vmax;bottom:-20vmax;opacity:.4;animation-delay:-9s}
+@keyframes fl{to{transform:translate(8vmax,6vmax) scale(1.2)}}
+.g{background:var(--gl);border:1px solid var(--gb);backdrop-filter:blur(24px) saturate(1.7);-webkit-backdrop-filter:blur(24px) saturate(1.7);border-radius:30px;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 24px 60px rgba(0,0,0,.35)}
+.w{max-width:520px;margin:0 auto;padding:0 16px}
+nav{position:sticky;top:0;z-index:5;margin:calc(10px + env(safe-area-inset-top,0px)) 12px 0;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:999px;max-width:520px;margin-left:auto;margin-right:auto}
+.sc{display:flex;gap:14px;padding:14px;margin-bottom:10px;align-items:center}
+.mq{width:96px;flex:none;background:#fff;border-radius:14px;padding:2px}.mq svg{width:100%;display:block}
+.mi{flex:1;min-width:0}.mi b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mi p{font-size:13px;color:var(--mu);margin:2px 0 8px;word-break:break-all}
+.sc .b{padding:10px 6px;font-size:14px}
+nav b{font-size:18px}nav a{color:var(--tx);text-decoration:none;font-size:14px;font-weight:600;padding:8px 14px;border-radius:999px;background:var(--gl)}
+.hero{text-align:center;padding:48px 0 28px}
+.orb{width:128px;height:128px;margin:0 auto 22px;display:grid;place-items:center;font-size:56px;background:radial-gradient(circle at 30% 25%,#fff8,#ff4d6d 45%,#5b6cff);animation:mo 7s ease-in-out infinite;box-shadow:inset 0 0 30px #fff6,0 20px 60px #ff4d6d66}
+@keyframes mo{0%,100%{border-radius:60% 40% 55% 45%/50% 60% 40% 50%}50%{border-radius:40% 60% 45% 55%/60% 40% 60% 40%;transform:translateY(-8px)}}
+h1{font-size:40px;line-height:1.05;letter-spacing:-1px;margin-bottom:12px}
+h1 span{background:linear-gradient(90deg,#ff8fa3,#8ea0ff,#5ef0e0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mu);line-height:1.5;margin-bottom:24px}
+.b{display:inline-block;position:relative;overflow:hidden;border:0;cursor:pointer;color:#fff;font:700 16px system-ui,sans-serif;padding:15px 28px;border-radius:999px;background:linear-gradient(135deg,#ff4d6d,#8b5cf6);box-shadow:0 10px 30px #ff4d6d55,inset 0 1px 0 #fff6;text-decoration:none;transition:transform .2s,border-radius .3s}
+.b::after{content:"";position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:#fff4;transform:rotate(20deg);transition:left .6s}
+.b:hover::after{left:130%}.b:active{transform:scale(.95);border-radius:22px}
+.b.s{background:var(--gl);border:1px solid var(--gb);box-shadow:none;backdrop-filter:blur(10px)}
+.bk{width:100%;margin-top:10px;text-align:center}
+.row{display:grid;gap:12px;margin:8px 0 36px}
+.f{padding:18px 20px}.f h3{font-size:17px;margin-bottom:4px}.f p{color:var(--mu);font-size:14px;line-height:1.5}
+h2{font-size:26px;margin:14px 0 14px;letter-spacing:-.5px}
+.st{display:flex;gap:14px;align-items:center;padding:14px 18px}.st em{font-style:normal;flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:linear-gradient(135deg,#ff4d6d,#8b5cf6)}
+.st p{font-size:15px}
+.gen{padding:20px;margin-bottom:36px}
+label{display:block;font-size:13px;color:var(--mu);margin:14px 0 6px}
+input,select,textarea{width:100%;padding:14px 16px;font:16px system-ui,sans-serif;color:var(--tx);background:rgba(255,255,255,.08);border:1px solid var(--gb);border-radius:18px;outline:0;transition:border .2s,box-shadow .2s}
+input:focus,select:focus,textarea:focus{border-color:#8ea0ff;box-shadow:0 0 0 4px #8ea0ff33}
+select option{color:#111}
+::placeholder{color:#8088aa}
+.ch{display:flex;gap:8px;flex-wrap:wrap}
+.ch button{flex:1;min-width:70px;padding:12px 6px;border-radius:18px;border:1px solid var(--gb);background:rgba(255,255,255,.07);color:var(--tx);font:600 14px system-ui,sans-serif;cursor:pointer;transition:all .25s}
+.ch button.on{background:linear-gradient(135deg,#ff4d6d99,#8b5cf699);border-color:#fff8;transform:translateY(-2px)}
+.sw button{flex:none;width:42px;height:42px;min-width:0;padding:0;border-radius:50%}
+.sw button.on{outline:3px solid #fff;outline-offset:2px}
+.hide{display:none}
+#pv{text-align:center;margin:22px 0 4px}
+.stk{display:inline-block;width:270px;background:#fff;color:#111;border:6px solid var(--c,#ff4d6d);border-radius:32px;padding:16px 16px 14px;box-shadow:0 20px 50px #0006}
+.stk b{display:block;font-size:14px;letter-spacing:1px;color:var(--c,#ff4d6d)}
+.stk .q{width:230px;height:230px;margin:10px auto;transition:opacity .3s}.stk .q svg{width:100%;height:100%;display:block}
+.stk strong{display:block;font-size:17px}.stk small{color:#666;font-size:12px}
+#hint{word-break:break-all;color:var(--mu);font-size:12px;margin-top:12px;text-align:center}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+details{padding:16px 20px;margin-bottom:10px}summary{font-weight:700;cursor:pointer}details p{color:var(--mu);font-size:14px;line-height:1.5;margin-top:8px}
+footer{text-align:center;color:var(--mu);font-size:13px;padding:20px 0 calc(30px + env(safe-area-inset-bottom,0px))}
+#scan{text-align:center;padding-top:40px}#scan .g{padding:24px;margin:20px 0}
+@media print{body *{visibility:hidden}#pv,#pv *{visibility:visible}#pv{position:absolute;left:0;top:0}}
+</style></head><body>
+<div class="bl"><i></i><i></i><i></i></div>
+
+<!-- SCAN PAGE -->
+<div id="scan" class="w hide">
+  <div class="orb" id="sic">🚗</div>
+  <h1 id="st"></h1><p class="sub" id="sn"></p>
+  <div class="g"><p><b id="so" style="font-size:20px"></b></p><p class="sub" id="snote" style="margin:6px 0 0"></p>
+    <a class="b bk" id="call">📞 Call owner</a><a class="b s bk" id="wa">💬 WhatsApp</a><a class="b s bk" id="sms">✉️ SMS</a></div>
+  <a class="b s" id="back" href="#">Make my own sticker</a>
+</div>
+
+<!-- MAIN SITE -->
+<div id="main">
+<nav class="g"><b>🚨 SilentSOS</b><a href="#saved">My QRs</a></nav>
+<div class="w">
+  <section class="hero">
+    <div class="orb">📲</div>
+    <h1>One scan.<br><span>Reach the owner.</span></h1>
+    <p class="sub">Stick a QR on your car, bike, pet tag or your child's school bag. Anyone who scans it can contact you instantly, in an emergency or when your car blocks the way.</p>
+    <a class="b" href="#make">Create my sticker</a>
+  </section>
+  <div class="row">
+    <div class="g f"><h3>💬 WhatsApp chat</h3><p>Scanning opens a WhatsApp chat with you instantly. Works with every scanner, no sign-up.</p></div>
+    <div class="g f"><h3>📞 Call or details page</h3><p>Prefer a different way? Choose the phone dialer or a clean contact page.</p></div>
+    <div class="g f"><h3>🖨️ Print or download</h3><p>Save your sticker as a PNG, then print it and stick it on.</p></div>
+  </div>
+  <h2>How it works</h2>
+  <div class="row" style="margin-top:0">
+    <div class="g st"><em>1</em><p>Enter your name, number and what the sticker is for.</p></div>
+    <div class="g st"><em>2</em><p>Pick the style and what happens when someone scans.</p></div>
+    <div class="g st"><em>3</em><p>Download, print and stick it where it can be seen.</p></div>
+  </div>
+
+  <h2 id="make">Create your sticker</h2>
+  <div class="g gen">
+    <label style="margin-top:0">Sticker for</label>
+    <div class="ch" id="ty"><button class="on" data-v="car">🚗 Car</button><button data-v="bike">🏍️ Bike</button><button data-v="bag">🎒 Bag</button><button data-v="pet">🐶 Pet</button></div>
+    <label>Label (vehicle number, child's name…)</label><input id="lbl" placeholder="e.g. MH12 AB 1234">
+    <label>Your name</label><input id="nm" placeholder="Owner name">
+    <label>Phone (with country code)</label><input id="ph" type="tel" inputmode="tel" placeholder="919876543210 (country code + number, no +)">
+    <label>Note for the finder (optional)</label><textarea id="note" rows="2" placeholder="Call me if my car is blocking you"></textarea>
+    <label>When someone scans</label>
+    <select id="mode"><option value="wa" selected>💬 Open WhatsApp chat (recommended)</option><option value="call">📞 Open phone dialer to call me</option><option value="page">🌐 Show a details page</option></select>
+    <div id="sitebox" class="hide"><label>Your website address (where this site is hosted)</label><input id="site" type="url" inputmode="url" placeholder="https://yoursite.netlify.app"></div>
+    <label>Colour</label>
+    <div class="ch sw" id="co"><button class="on" data-v="#ff4d6d" style="background:#ff4d6d"></button><button data-v="#3b82f6" style="background:#3b82f6"></button><button data-v="#10b981" style="background:#10b981"></button><button data-v="#8b5cf6" style="background:#8b5cf6"></button><button data-v="#f59e0b" style="background:#f59e0b"></button></div>
+
+    <div id="pv"><div class="stk" id="stk" style="--c:#ff4d6d">
+      <b>🚨 SCAN IN EMERGENCY</b><div class="q" id="qr"></div>
+      <strong id="sl">🚗 Car</strong><small id="sa">Scan to call owner</small></div></div>
+    <p id="hint"></p>
+    <div class="two"><button class="b" id="dl">⬇️ Download PNG</button><button class="b s" id="pr">🖨️ Print</button></div>
+    <button class="b s bk" id="cp">🔗 Copy QR link</button>
+    <button class="b bk" id="sa2">💾 Save to My QRs</button>
+    <button class="b s bk hide" id="nw">＋ New sticker</button>
+  </div>
+
+  <h2 id="saved">My saved QRs</h2>
+  <p class="sub" style="margin:-6px 0 14px;font-size:13px">Saved on this phone/browser only. Your people and vehicles stay here for next time.</p>
+  <div id="sv" style="margin-bottom:30px"></div>
+  <h2>Questions</h2>
+  <details class="g"><summary>Can people see my number?</summary><p>Yes. Anyone who scans can read it, because it is stored in the QR. Hiding it fully needs a call-forwarding service such as Twilio plus a backend.</p></details>
+  <details class="g"><summary>Do I need a website?</summary><p>Not for WhatsApp or Call stickers. Only the details page needs hosting.</p></details>
+  <details class="g"><summary>Does the QR expire?</summary><p>No. It has no server behind it, so it works as long as the number stays the same.</p></details>
+  <footer>Made with ❤️ · SilentSOS</footer>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+var $=function(i){return document.getElementById(i)};
+var IC={car:"🚗",bike:"🏍️",bag:"🎒",pet:"🐶"},NM={car:"Car",bike:"Bike",bag:"School bag",pet:"Pet"};
+var S={t:"car",c:"#ff4d6d"},Q=null,R=false;
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function dg(){return $("ph").value.replace(/\D/g,"")}
+function lb(){return $("lbl").value.trim()||NM[S.t]}
+function base(v){v=(v===undefined?$("site").value:v).trim();if(v)return v.split("#")[0].split("?")[0];
+  return /^https?:/.test(location.protocol)?location.origin+location.pathname:""}
+function okSite(){return /^https?:\/\/[^ ]+\.[^ ]+/.test(base())}
+function pl(o){var d=String(o.p).replace(/\D/g,""),l=o.l||NM[o.t];
+  if(o.md==="call")return"TEL:+"+d;
+  if(o.md==="wa")return"https://wa.me/"+d+"?text="+encodeURIComponent("Hi, I scanned your emergency QR for "+l);
+  return base(o.s)+"#"+new URLSearchParams({t:o.t,l:o.l,n:o.n,p:d,m:o.m})}
+function cur(){return{id:Date.now(),t:S.t,c:S.c,l:$("lbl").value.trim(),n:$("nm").value.trim(),p:$("ph").value.trim(),m:$("note").value.trim(),md:$("mode").value,s:$("site").value.trim()}}
+function payload(){return pl(cur())}
+function act(){return{call:"call owner",wa:"WhatsApp owner",page:"contact owner"}[$("mode").value]}
+function render(){
+  var m=$("mode").value;$("sitebox").classList.toggle("hide",m!=="page");
+  R=dg().length>=7&&(m!=="page"||okSite());
+  var u=R?payload():"https://example.com";
+  try{Q=qrcode(0,"M");Q.addData(u);Q.make();$("qr").innerHTML=Q.createSvgTag({cellSize:4,margin:16,scalable:true}).replace("<svg",'<svg shape-rendering="crispEdges"')}
+  catch(e){$("qr").textContent="QR error: "+e.message}
+  $("qr").style.opacity=R?1:.2;
+  $("stk").style.setProperty("--c",S.c);
+  $("sl").textContent=IC[S.t]+" "+lb();$("sa").textContent="Scan to "+act();
+  $("hint").textContent=R?u:(m==="page"&&dg().length>=7?"Enter your website address to activate the QR":"Enter your phone number to activate the QR");
+}
+function grp(id,cb){var b=$(id);b.onclick=function(e){var x=e.target.closest("[data-v]");if(!x)return;
+  Array.prototype.forEach.call(b.children,function(c){c.classList.toggle("on",c===x)});cb(x.dataset.v);render()}}
+grp("ty",function(v){S.t=v});grp("co",function(v){S.c=v});
+["lbl","nm","ph","note","mode","site"].forEach(function(i){$(i).addEventListener("input",render)});
+function rr(x,a,b,w,h,r){x.beginPath();x.moveTo(a+r,b);x.arcTo(a+w,b,a+w,b+h,r);x.arcTo(a+w,b+h,a,b+h,r);x.arcTo(a,b+h,a,b,r);x.arcTo(a,b,a+w,b,r);x.closePath()}
+$("dl").onclick=function(){
+  if(!R){alert("Please complete the details first.");return}
+  var c=document.createElement("canvas");c.width=600;c.height=780;var x=c.getContext("2d");
+  x.fillStyle="#fff";rr(x,0,0,600,780,56);x.fill();
+  x.strokeStyle=S.c;x.lineWidth=16;rr(x,8,8,584,764,50);x.stroke();
+  x.textAlign="center";x.fillStyle=S.c;x.font="bold 34px sans-serif";x.fillText("SCAN IN EMERGENCY",300,100);
+  var n=Q.getModuleCount(),cs=Math.floor(440/(n+8)),im=new Image();
+  im.onload=function(){x.imageSmoothingEnabled=false;x.drawImage(im,(600-im.width)/2,130);
+    x.fillStyle="#111";x.font="bold 42px sans-serif";x.fillText(IC[S.t]+" "+lb(),300,630);
+    x.fillStyle="#666";x.font="28px sans-serif";x.fillText("Scan to "+act(),300,680);
+    var a=document.createElement("a");a.download="emergency-qr.png";a.href=c.toDataURL("image/png");document.body.appendChild(a);a.click();a.remove()};
+  im.src=Q.createDataURL(cs,cs*4)};
+$("pr").onclick=function(){if(!R){alert("Please complete the details first.");return}window.print()};
+$("cp").onclick=function(){if(!R)return;var u=payload();
+  (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){$("cp").textContent="✅ Copied"},function(){prompt("Copy this link:",u)});
+  setTimeout(function(){$("cp").textContent="🔗 Copy QR link"},1800)};
+var KEY="silentsos_v1",L=[],E=null;
+function ld(){try{L=JSON.parse(localStorage.getItem(KEY)||"[]")}catch(e){L=[]}}
+function sv(){try{localStorage.setItem(KEY,JSON.stringify(L))}catch(e){alert("Could not save in this browser.")}}
+function setBtn(){$("sa2").textContent=E?"💾 Update saved QR":"💾 Save to My QRs";$("nw").classList.toggle("hide",!E)}
+function setForm(o){$("lbl").value=o.l;$("nm").value=o.n;$("ph").value=o.p;$("note").value=o.m;$("mode").value=o.md;$("site").value=o.s;S.t=o.t;S.c=o.c;
+  [].forEach.call($("ty").children,function(c){c.classList.toggle("on",c.dataset.v===o.t)});
+  [].forEach.call($("co").children,function(c){c.classList.toggle("on",c.dataset.v===o.c)});E=o.id;setBtn();render();$("make").scrollIntoView({behavior:"smooth"})}
+function drawList(){var b=$("sv");
+  if(!L.length){b.innerHTML='<div class="g f"><p>No saved stickers yet. Fill in the form and tap Save to My QRs.</p></div>';return}
+  b.innerHTML="";
+  L.forEach(function(o){var d=document.createElement("div"),svg="";d.className="g sc";
+    try{var q=qrcode(0,"M");q.addData(pl(o));q.make();svg=q.createSvgTag({cellSize:4,margin:12,scalable:true}).replace("<svg",'<svg shape-rendering="crispEdges"')}catch(e){}
+    d.innerHTML='<div class="mq">'+svg+'</div><div class="mi"><b>'+esc(IC[o.t]+" "+(o.l||NM[o.t]))+'</b><p>'+esc(o.n||"")+" · "+esc(o.p)+'</p><div class="two"><button class="b s" data-o="'+o.id+'">Open</button><button class="b s" data-d="'+o.id+'">Delete</button></div></div>';
+    b.appendChild(d)})}
+$("sv").onclick=function(e){var x=e.target.closest("button");if(!x)return;
+  if(x.dataset.o){setForm(L.filter(function(o){return String(o.id)===x.dataset.o})[0])}
+  if(x.dataset.d&&confirm("Delete this saved QR?")){L=L.filter(function(o){return String(o.id)!==x.dataset.d});if(String(E)===x.dataset.d){E=null;setBtn()}sv();drawList()}};
+$("sa2").onclick=function(){if(!R){alert("Please complete the details first.");return}
+  var o=cur();if(E){o.id=E;L=L.map(function(x){return x.id===E?o:x})}else{L.unshift(o);E=o.id}
+  sv();drawList();$("sa2").textContent="✅ Saved";setTimeout(setBtn,1500);$("nw").classList.remove("hide")};
+$("nw").onclick=function(){["lbl","nm","ph","note","site"].forEach(function(i){$(i).value=""});E=null;setBtn();render()};
+function route(){
+  var h=location.hash.slice(1);
+  if(h.indexOf("p=")<0){$("main").classList.remove("hide");$("scan").classList.add("hide");return}
+  var p=new URLSearchParams(h),ph=(p.get("p")||"").replace(/\D/g,""),t=p.get("t")||"car";
+  $("main").classList.add("hide");$("scan").classList.remove("hide");window.scrollTo(0,0);
+  $("sic").textContent=IC[t]||"🚗";$("st").textContent=p.get("l")||NM[t];
+  $("sn").textContent="Contact the owner of this "+(NM[t]||"item").toLowerCase();
+  $("so").textContent=p.get("n")||"Owner";$("snote").textContent=p.get("m")||"";
+  $("call").href="tel:+"+ph;$("sms").href="sms:+"+ph;
+  $("wa").href="https://wa.me/"+ph+"?text="+encodeURIComponent("Hello, I scanned your emergency QR for "+(p.get("l")||NM[t]))}
+$("back").onclick=function(){history.replaceState(null,"",location.pathname);route()};
+window.addEventListener("hashchange",route);route();render();ld();drawList();
+</script>
+</body></html>
